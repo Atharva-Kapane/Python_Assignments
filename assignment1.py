@@ -1,325 +1,167 @@
-""" 
-Q1. Write a program to read three numbers from user and compare
-the greatest and smallest of those numbers and print the appropriate message. 
-"""
-
-def compare():
-    a = int(input("1) Enter a number : "))
-    b = int(input("2) Enter a number : "))
-    c = int(input("3) Enter a number : "))
-
-    # GREATEST
-    print("using built-in max() : ",max(a,b,c))
-
-    if a >= b and a >= c:
-        greatest = a
-    elif b >= a and b >= c:
-        greatest = b
-    else:
-        greatest = c
-
-    # SMALLEST
-    print("using built-in min() : ",min(a,b,c))
-
-    if a <= b and a <= c:
-        smallest = a
-    elif b <= a and b <= c:
-        smallest = b
-    else:
-        smallest = c
-
-    print("Manually: greatest = ", greatest, "smallest = ", smallest)
-
-
-
-compare()
-
-
-
+#                            Assignment - 1
 
 """
-Q2. Write a program to print the addition of first 30 natural numbers.
-(Use while statement)
+Q1. Create variables of different data types (string, integer, float, Boolean)
+and print their values and types.
 """
 
-def sum_of_30():
-    i = 1
-    total_sum = 0
-    while i < 31:
-        total_sum += i
-        i += 1
-    print(f"sum of first 30 natural numbers : {total_sum}")
+string = "Atharva"
+num = 5
+float_var = 3.141592653596
+boolean = True
 
-sum_of_30()
-
-
-"""
-Q3. Write a program to print even numbers in between 10 to 20 by using while loop.
-"""
-
-def even_nums():
-    i = 10
-    while i <= 20:
-        if i%2 == 0:
-            print(i,end=" ")
-        i += 1
-    print()
-
-even_nums()
-
+print(string,type(string))
+print(num, type(num))
+print(float_var, type(float_var))
+print(boolean, type(boolean))
 
 """
-Q4. Write a program to search a number or a string in a list and print it.
-Read the number /string to be searched, from the user. Make use of for and 
-if statements.
+Q2. Write a Python program that asks the user for their name and age,
+then prints a message saying "Hello, [Name]! You are [Age] years old."
 """
 
-def item_search():
-    lst = ['abc',1,2,3,4,"xyz","pqr",10,11,12,13]
-    item = input("Enter an element to search : ")
-
-    if item.isdigit():
-        item = int(item)
-
-    for element in lst:
-        if element == item:
-            print(f"{item} found in given list.")
-            break
-    else:
-        print(f"{item} not found in given list.")
-
-item_search()
-
+def hello_user():
+    name = input("Enter your name : ")
+    age = input("Enter your age : ")
+    print("Hello,", name, "! You are", age, "years old.")
+hello_user()
 
 """
-Q5. Write a program to print the prime and non-prime numbers.
-(Can also decide a range like in between 20 to 50 numbers).
+Q3. 3.	Create a simple calculator that allows the user to input two numbers
+and an operator (+, -, *, /, %, **, //). Based on the operator provided,
+the program should perform the corresponding arithmetic operation and display
+the result.
 """
 
-def is_prime(num: int) -> bool:
-    if num <= 1:
-        return False
-    for i in range(2,int(num**0.5)+1):
-        if num%i == 0:
-            return False
-    return True
-
-def prime_non_prime():
-    primes = []
-    non_primes = []
-    for i in range(20,51):
-        if is_prime(i):
-            primes.append(i)
-        else:
-            non_primes.append(i)
-
-    print(f"Between 20 to 50 : \nPrime numbers: {primes}")
-    print(f"Non-Prime numbers: {non_primes}")
-
-prime_non_prime()
-
+def calculator():
+    print(eval(input("Enter an expression to calculate : ")))
+calculator()
 
 """
-Q6. Write a program to read a string from the user.
-Also, get a substring from the user and search it in the given string.
+Q4. Write a Python program that takes the length and width of a rectangle
+as input and calculates its area and perimeter. Display the results.
 """
 
-def substr_search():
-    str1 = input("enter a string : ")
-    str2 = input("enter a sub string : ")
+def area_perimeter():
+    length = float(input("Enter length = "))
+    breadth = float(input("Enter breadth = "))
+    area = length * breadth
+    perimeter = 2 * (length + breadth)
+    print(f"Area = {area}\nPerimeter = {perimeter}")
 
-    # Built-in way-
-    if str2 in str1:
-        print(f"{str2} found in {str1}")
-    else:
-        print(f"{str2} not found in {str1}")
-
-    # MANUAL WAY-
-    found = False
-
-    for i in range(len(str1) - len(str2) + 1):
-        match = True
-
-        for j in range(len(str2)):
-            if str1[i + j] != str2[j]:
-                match = False
-                break
-
-        if match:
-            found = True
-            print(f"{str2} found in {str1} at {i}:{i+len(str2)}")
-            break
-
-    if not found:
-        print(f"{str2} not found in {str1}")    
-
-substr_search()
-
+area_perimeter()
 
 """
-Q7. Write a program to read a string and read the substring 
-from a specific position and print it.
+Q5. 5.	Write a Python program that takes an integer as input 
+and determines if it is even or odd. Print the result.
 """
 
-def slicing():
-    string = input("Enter a string : ")
-    start = int(input("enter start index of slice : "))
-    end = int(input("enter end index (exclusive) of slice : "))
+def even_odd():
+    a = int(input("Enter an integer : "))
+    print(f"{a} is {'even' if a%2 == 0 else 'odd'}")
 
-    substring = string[start:end]
-    print(f"extracted substring : {substring}")
-
-slicing()
-
+even_odd()
 
 """
-Q8. Write a program to count the occurrences of a character in the given string.
-(For e.g., in string 'Hello World' count the occurrences of the letter 'l').
+Q6. Write a Python program that takes the principal amount, rate of interest,
+and time period as inputs and calculates the simple interest.
+Display the calculated interest.
 """
 
-def count_occurrences():
-    string = input("Enter a string : ")
-    letter = input("Enter a character to count occurrence : ")
+def simple_interest():
+    p = float(input("Enter principal amount = "))
+    r = float(input("Enter Rate of interest = "))
+    n = float(input("Enter time in years = "))
 
-    count = 0
-    for s in string:
-        if s == letter:
-            count += 1
-    print(f"occurrence of '{letter}' in {string} is {count} times.")
+    simple_interest_amount = (p * r * n) / 100
+    print(f"Simple Interest = {simple_interest_amount}")
 
-    # Built-in way-
-    print("Using built-in count() : ",string.count(letter))
-
-count_occurrences()
-
+simple_interest()
 
 """
-Q9. Write a program to capitalize the first letter of a given string.
-(e.g., this is an example)
+Q7. Write a Python program that takes three numbers as input and calculates their
+average. Print the result.
 """
 
-def cap():
-    text = input("Enter a string: ")
-    cap_text = text[0].upper() + text[1:]
-    cap_text_1 = text.capitalize()
-    cap_text_2 = text.title()
-    print("using upper() : ",cap_text)
-    print("using capitalize() : ",cap_text_1)
-    print("using title() : ",cap_text_2)
+def avg():
+    a, b, c = map(float,(input("Enter 3 numbers with space : ").split()))
+    print(f"Average = ", (a+b+c)/3)
 
-cap()
+avg()
 
 """
-Q10. Write a program to replace a substring in a string with any other
-substring or special characters. (e.g. In string s = 'This has to be the beginning
-of the chapter', where replace the substring 'the beginning' with 'the end')
+Q8. Write a Python program that converts temperature from Celsius to
+Fahrenheit and vice versa. The program should ask the user for the temperature
+value and the unit (Celsius or Fahrenheit) and then perform the conversion.
 """
 
-def str_replace():
-    string = input("Enter a string: ")
-    target = input("Enter a substring to replace: ")
-    replacement = input("Enter a substring to replace with: ")
-
-    modified_string = string.replace(target, replacement)
-    print(f"Modified string: {modified_string}")
-
-str_replace()
-
-"""
-Q11. Count all lower case, upper case, digits,
-and special symbols from a given string. For e.g. string = 'Py#@th12)ON'
-"""
-
-def count_characters():
-    string = input("Enter a string: ")
-    l = u = d = sy = 0
-
-    for s in string:
-        if s.isupper():
-            u += 1
-        elif s.islower():
-            l += 1
-        elif s.isdigit():
-            d += 1
-        else:
-            sy += 1
-
-    print(f"Lower case = {l}")
-    print(f"upper case = {u}")
-    print(f"digits = {d}")
-    print(f"special symbols = {sy}")
-
-count_characters()
-
-"""
-Q12. Given a string of odd length greater than 7, return a string made
-of the middle three chars of a given String. For e.g., str1 = 'Pythonexample'
-and str2 = 'trialprograms', the resulting string = 'exarog' (Note: This appears
-to combine the middle three letters of both strings, 'exa' and 'rog').
-"""
-
-def get_middle_three():
-    str1 = input("Enter a string: ")
-    
-    if len(str1) > 7 and len(str1) % 2 != 0:
-        mid = len(str1) // 2
-        return str1[mid : mid + 3]
-    return "Invalid string length or type"
-
-get_middle_three()
-
-
-"""
-Q13. Find all occurrences of 'sample' in a given string ignoring the case.
-For e.g., string = 'This is a SAMPLE program. Solve the sample program'.
-"""
-
-def find_all():
-    lower_string = input("Enter a string: ").lower()
-    lower_target = input("Enter a string: ").lower()
-
-    indices = []
-    start = 0
+def temp_converter():
     while True:
-        pos = lower_string.find(lower_target, start)
-        if pos == -1:
-            break
-        indices.append(pos)
-        start = pos + len(lower_target)
+        convert = input("Choose an option:\n" \
+        "1) Celsius to Fahr\n" \
+        "2) Fahr to Celsius\n" \
+        "3)exit\n" \
+        "\n===> "
+        )
+        match convert:
+            case '1':
+                celsius = float(input("Enter temperature in Celsius: "))
+                fahr = (celsius * 9 / 5) + 32
+                print(f"{celsius}°C = {fahr}°F")
 
-    return indices
+            case '2':
+                fahr = float(input("Enter temperature in Fahrenheit: "))
+                celsius = (fahr - 32) * 5 / 9
+                print(f"{fahr}°F = {celsius}°C")
 
-find_all()
+            case '3':
+                return
 
+            case _:
+                print("Error.....Invalid entry.")
 
+temp_converter()
 
 """
-Q14. Given a string, calculate the occurrences of each character in the string.
-For e.g., 'Hello' -> H:1, e:1, l:2, o:1
+Q9. Write a Python program that calculates the Body Mass Index (BMI) based
+on user input for weight (in kg) and height (in meters). The formula for BMI
+is weight / (height ** 2). Display the BMI and categorize it as underweight,
+normal weight, overweight, or obese.
 """
 
-def count_characters(input_string):
-    char_count = {}
-    for char in input_string:
-        if char in char_count:
-            char_count[char] += 1
-        else:
-            char_count[char] = 1
-    return char_count
+def calculate_bmi():
+    weight = float(input("Enter your weight in kilograms: "))
+    height = float(input("Enter your height in meters: "))
 
-s = 'Hello'
-result = count_characters(s)
-for char, count in result.items():
-    print(f"{char}: {count}")
+    bmi = weight / (height ** 2)
+    print(f"Your BMI is {bmi:.1f}")
 
+    if bmi < 18.5:
+        print("You are underweight.")
+    elif bmi < 25:
+        print("You have a normal weight.")
+    elif bmi < 30:
+        print("You are overweight.")
+    else:
+        print("You are obese.")
 
-# My Counter practice -
-def freq():
-    from collections import Counter
-    string = input("Enter a string: ")
-    frequencies = Counter(string)
-    
-    for c, f in frequencies.items():
-        print(f"{c} = {f}")
+calculate_bmi()
 
-freq()
+"""
+Q10. Write a Python program that takes two numbers as input and compares them.
+Print whether the first number is greater than, less than, or equal to the second
+number.
+"""
+
+def compare_numbers():
+    first_number = float(input("Enter the first number: "))
+    second_number = float(input("Enter the second number: "))
+
+    if first_number > second_number:
+        print("The first number is greater.")
+    elif first_number < second_number:
+        print("The first number is less.")
+    else:
+        print("The numbers are equal.")
+
+compare_numbers()
